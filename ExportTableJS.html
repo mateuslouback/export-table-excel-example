@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Table to Excel Demo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-3">
+        <h3>Table to Excel Demo</h3>
+        <p>Exporting the W3C Example Table</p>
+
+        <div>
+            <input type="button" class="btn btn-primary font-weight-bold"
+                onclick="tableToExcel('testTable', 'Example Table')" value="&nbsp; Export to Excel &nbsp;">
+        </div>
+
+        <br />
+
+        <table id="testTable" summary="Code page support in different versions of MS Windows." rules="groups"
+            frame="hsides" class="table" style="border-color: transparent;">
+
+            <thead valign="top">
+                <tr>
+                    <th colspan="7" style="text-align:center;background-color: #007bff; color: #fff">
+                        TABLE TITLE
+                    </th>
+                </tr>
+                <tr>
+                    <th style="background-color: #dedede;">ID</th>
+                    <th style="background-color: #dedede;">Name</th>
+                    <th style="background-color: #dedede;">Gender</th>
+                    <th style="background-color: #dedede;">Age</th>
+                    <th style="background-color: #dedede;">Weight</th>
+                    <th style="background-color: #dedede;">Adress</th>
+                    <th style="background-color: #dedede;">Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1200</td>
+                    <td style="color:red;">Kathleen C. Grogan</td>
+                    <td>Female</td>
+                    <td>50</td>
+                    <td>86</td>
+                    <td>4405 Crowfield Road
+                        Phoenix, AZ 85018</td>
+                    <td>602-912-4658</td>
+                </tr>
+                <tr>
+                    <td>1250</td>
+                    <td style="font-weight: bold">Beverly D. Jaime</td>
+                    <td>Female</td>
+                    <td>35</td>
+                    <td>69</td>
+                    <td>4270 Ottis Street
+                        Clinton, OK 736018</td>
+                    <td>765-477-1037</td>
+                </tr>
+                <tr>
+                    <td>1251</td>
+                    <td style="color:green;">Louise G. Pogue</td>
+                    <td>Female</td>
+                    <td>49</td>
+                    <td>74</td>
+                    <td>3632 Sugarfoot Lane
+                        Lafayette, IN 47905</td>
+                    <td>231-319-0709</td>
+                </tr>
+                <tr>
+                    <td>1252</td>
+                    <td>Brittany T. Taylor</td>
+                    <td>Female</td>
+                    <td>18</td>
+                    <td>99</td>
+                    <td>4118 Williams Lane
+                        Wichita, KS 67226</td>
+                    <td>316-573-0720</td>
+                </tr>
+                <tr>
+                    <td>1253</td>
+                    <td>Scott J. Hamilton</td>
+                    <td>Male</td>
+                    <td>25</td>
+                    <td>56</td>
+                    <td>3684 Hannah Street
+                        Sylva, NC 28779</td>
+                    <td>828-361-3242</td>
+                </tr>
+                <tr>
+                    <td>1254</td>
+                    <td>Lillian J. Goodman</td>
+                    <td>Female</td>
+                    <td>36</td>
+                    <td>79</td>
+                    <td>2131 Ferrell Street
+                        Duluth, MN 55802</td>
+                    <td>218-471-7060</td>
+                </tr>
+                <tr>
+                    <td>1255</td>
+                    <td>Robert O. Lares</td>
+                    <td>Male</td>
+                    <td>90</td>
+                    <td>84</td>
+                    <td>376 Pick Street
+                        Loveland, CO 80537</td>
+                    <td>970-635-6307</td>
+                </tr>
+                <tr>
+                    <td>1256</td>
+                    <td>Kim R. Goble</td>
+                    <td>Female</td>
+                    <td>54</td>
+                    <td>70</td>
+                    <td>3387 Whispering Pines Circle
+                        Frisco, TX 75034</td>
+                    <td>972-370-6620</td>
+                </tr>
+                <tr>
+                    <td>1257</td>
+                    <td>Ronnie J. Owens</td>
+                    <td>Male</td>
+                    <td>28</td>
+                    <td>65</td>
+                    <td>3351 Aviation Way
+                        Los Angeles, CA 90017</td>
+                    <td>213-927-5878</td>
+                </tr>
+                <tr>
+                    <td>1361</td>
+                    <td>Luis S. Decker</td>
+                    <td>Male</td>
+                    <td>65</td>
+                    <td>80</td>
+                    <td>4450 Black Stallion Road
+                        Lexington, KY 40507</td>
+                    <td>859-433-7119</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        var tableToExcel = (function () {
+            var uri = 'data:application/vnd.ms-excel;base64,'
+                , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><meta charset="UTF-8"><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
+                , base64 = function (s) { return window.btoa(unescape(encodeURIComponent(s))) }
+                , format = function (s, c) { return s.replace(/{(\w+)}/g, function (m, p) { return c[p]; }) }
+            return function (table, name) {
+                if (!table.nodeType) table = document.getElementById(table)
+                var ctx = { worksheet: name || 'Worksheet', table: table.innerHTML }
+                window.location.href = uri + base64(format(template, ctx))
+            }
+        })()
+    </script>
+</body>
+
+</html>
