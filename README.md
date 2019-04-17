@@ -2,6 +2,8 @@
 
 Example of exporting tables with CSS styles to Excel using Javascript.
 
+![](Export.jpg)
+
 ### Export function 
 ```
 var tableToExcel = (function () {
